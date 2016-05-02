@@ -1,0 +1,247 @@
+\documentclass[8pt,a4paper]{article}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{verbatim} 
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{authblk}
+\doublespacing
+
+\title{General version of the spatial and stochastic model, derivation and analytical study of the mean field, stochastic non-spatial, and deterministic spatial models}
+\author{ }
+\author{}
+%\affil{Metapopulation Research Group, University of Helsinki}
+\date{\vspace{-5ex}}
+
+\linespread{1}
+\begin{document}
+\pagenumbering{gobble}
+
+\maketitle
+
+\section{General version of the spatial and stochastic model}
+Here, we define habitat quality in a more general way than in the main text as 
+\begin{equation*}
+Q(x,q) = \tau \sum_{(x' ,q') \in H} p_{\lambda} (x - x') \varphi(q,q')
+\end{equation*}
+where $\varphi(q,q')$ is a kernel describing the range of resource types $q$ produced by a patch with nominal type $q'$ at location $x'$. 
+We assume it to be normalized as $\int_0^1 \varphi(q,q')dq = 1$. 
+We assume that the patches are circular and habitat quality is constant within the patch. 
+In other words, $p_{\lambda}(x)$ is a tophat kernel with $p_{\lambda}(x) = 0$ for  $| x | >\lambda$  and $p_{\lambda}(x) = 1$  for $|x| \leq \lambda$ where the parameter $\lambda$ controls patch size. 
+$H$ denotes the collection of habitat patch centers $x$ and their nominal types $q$.
+The colonization rate of resource unit of type $q$ at location $x$ is also defined here more generally than in the main text.
+For the establishment model, we define 
+\begin{equation*}
+r(x,q,n; a, q*,\nu, l, z) = a z^n f_{q*, \nu}  (q)\left( \sum_{(x' ,q') \in H_O(t)} D_l(x - x') \right)
+\end{equation*} 
+where $z \in (0,1]$ controls the severity of the competition and $n$ is the number of other species occupying the resource unit at the time of colonization.
+As in the main text, $H_O(t)$ denotes the collection of locations and types of resource units occupied by the focal species  at time $t$ and thus act as propagule sources.
+The parameter $a$ is an overall colonization rate parameter and the parameters $q*,\nu , l$ characterize the properties of the species.
+$D_{\lambda} (x)$ is top-hat kernel so that $D_l(x) = 1/(\pi l^2)$ if $|x| \leq l$ and $D_l(x) = 0$ if $|x| >  l$. 
+
+
+\section{General equations for the mean field model}
+
+The following equations describe the deterministic behaviour of the mean field equation for the general case. Mean field model without competition (for short Model 1) is obtained by setting $z=1$, and mean field model with competition (for short Model 2) by having $z<1$. We adopt  the following notations:
+
+\begin{tabular}{ll}
+$M$ & The total number of species. \\
+$\mathbb{M}$ & The set $\{1,\ldots, M\}.$\\
+$f_i (q)$ & The fitness of species $i$ with respect to resource unit type $q$. \\
+$\rho(q,t)$ & The density (i.e. number per unit area) of resource units of type   $q$ at time $t$. \\
+$\rho_S (q,t)$ & The density of resource units of type $q$ at time $t$ occupied by a set of  $ S$ species $S \subset \mathbb{M}$.\\
+$\rho_{\mathbb{M}}(q,t)$ & The density of resource units of type $q$ simultaneously occupied by all species at time $t.$ \\
+$|S|$ & The number of elements in S. \\
+$S_i$ & All subsets of $\mathbb{M}$ that contains $i.$\\
+$\rho_{S_i}(q,t)$ & The density of resource units of type $q$ occupied by the species $i$ at time $t.$ \\
+$\mathbb{M}\setminus{S}$ & The set obtained by removing all elements belonging to S from $\mathbb{M}.$\\
+$\rho_{\mathbb{M}\setminus{S}}(q,t)$ & The density of resource units of type $q$ where the community of species $S$ is not present. 
+\end{tabular}
+\vspace{0.6 cm}
+
+The mean field model describes the dynamics of the spatio-temporal point process at the limit of large interaction range. In the present model, this is achieved by letting the dispersal scale diverges to infinity. In this case, the spatial distribution of resource units becomes irrelevant, only their density (number per unit area) matters. The mean field model can be derived intuitively by deriving the colonization rate under the assumption of mass-action, or more formally following e.g. the procedure of Ovaskainen et al. (2014).
+
+For the establishment model, we have
+\begin{eqnarray*}
+\begin{cases}
+\displaystyle{\frac{d}{dt}}\rho(q,t) &= b_R-\mu_R \rho(q,t), \\
+\displaystyle{\frac{d}{dt}}\rho_{S}(q,t) &= -\mu_R \rho_S(q,t) -\rho_S(q,t)z^{|S|} \sum_{i \in \mathbb{M} \setminus S} a_i f_i(q) \sum_{J \in S_i} \int_0^1 \rho_J(q',t) dq' \\
+& + \sum_{i \in S} \rho_{S \setminus{\{i\}}}(q,t) z^{|S|-1} a_i f_i(q) \sum_{J \in S_i} \int_0^1 \rho_J(q',t) dq', \\
+\displaystyle{\frac{d}{dt}} \rho_{\mathbb{M}}(q,t) &= - \mu_R \rho_{\mathbb{M}}(q,t) + \sum_{i \in \mathbb{M}} \rho_{\mathbb{M} \setminus{\{i\}}}(q,t) z^{M-1} a_i f_i(q) \sum_{J \in S_i} \int_0^1 \rho_J(q',t) dq'.
+\end{cases}
+\end{eqnarray*}
+
+In both sets of equations, $S$ in $\rho_S(q,t)$ spans over all possible subset of $\mathbb{M}$ except the empty set \{$\emptyset$\} (which represents the density of resource units that are not occupied) and $\mathbb{M}$  itself which is described by the last equation. The subscript $i$ indicates species' identity such that
+$ \rho_i (q,t)$ (respectively $\rho(q,t)$) denotes the density of occupied resource units of type $q$ by species $i$ at time $t$ (respectively the density of resource units of type $q$ at time $t$).
+Like in the main text, the fitness function $f_i(q)$ is normalized to integrate to 1 and $a_i $  represents the colonization rate parameter. $b_R$ and $\mu_R$ are respectively the birth and death rate of a resource unit. 
+
+
+\section{Mean field establishment model}
+
+\subsection{Mean field  establishment model with only one species}
+The dynamics of the total density of resource units and the density of resource units occupied by species 1 is described by the following set of differential equations
+\begin{eqnarray}
+\begin{cases}
+\frac{\displaystyle{d}}{\displaystyle{dt}}\rho(q,t)= b_R-\mu_R \rho(q,t),\\
+\frac{\displaystyle{d}}{\displaystyle{dt}}\rho_1(q,t)= (\rho(q,t)-\rho_1(q,t)) a_1  f_1(q)\displaystyle{\int_0^1} \rho_1(q',t) dq'-\mu_R \rho_1(q,t).
+\end{cases}
+\end{eqnarray}
+For the total density of resource units, the equilibrium is $$\rho^*(q)=\frac{b_R}{\mu_R}.$$
+For the density of occupied resource units, there is a trivial equilibrium 
+$$\rho_1^*(q)=\rho_1^*=0$$
+and a non-trivial equilibrium is  defined implicitly by
+\begin{eqnarray}
+\rho_1^*(q)&=& \frac{b_R a_1 I_1^*f_1(q)}{\mu_R (\mu_R + a_1 I_1^* f_1(q))},
+\end{eqnarray}
+where
+\begin{eqnarray*}
+I_1^* &=& \int_0^1 \rho_1^*(q') dq'.
+\end{eqnarray*}
+If we integrate equation (8) with respect to $q$ from 0 to 1, we obtain
+\begin{eqnarray*}
+I_1^* &=& \frac{b_R a_1 I_1^*}{\mu_R}\int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 I_1^* f_1(q)}, 
+\end{eqnarray*} 
+and thus
+\begin{eqnarray}
+1 &=& \frac{b_R a_1}{\mu_R} \int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 I_1^* f_1(q)},
+\end{eqnarray} 
+where $I_1^*$ represents the total density of resources units of any type $q$ occupied by species 1 at equilibrium. It is easy that see that there is a unique $I_1^*$ that satisfies the equation (9): if assuming that $I_1^*<J_1^*$, then 
+\begin{eqnarray*}
+1 = \frac{b_R a_1}{\mu_R} \int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 J_1^* f_1(q)} & < & \frac{b_R a_1}{\mu_R} \int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 I_1^* f_1(q)}=1.
+\end{eqnarray*}
+It follows that the non-trivial equilibrium in (8) is unique.
+
+\subsubsection*{Linear stability analysis of the trivial equilibrium}
+We consider the dynamics starting from a small perturbation around the equilibrium, so that  $$\rho(q,t)=\rho^*(q)+\epsilon \tilde{v}(q,t)$$ and $$\rho_1(q,t)=\rho_1^*(q)+ \epsilon \tilde{w}(q,t)= \epsilon \tilde{w}(q,t).$$
+As before we linearise for small $\epsilon$ to obtain
+\begin{eqnarray*}
+\frac{d}{dt} \tilde{v}(q,t) &=& - \mu_R \tilde{v}(q,t),\\
+\frac{d}{dt} \tilde{w}(q,t) &=& \frac{a_1 b_R}{\mu_R}f_1(q) \int_0^1 \tilde{w}(q',t) dq' -\mu_R \tilde{w}(q,t).
+\end{eqnarray*}
+Making the ansatz $\tilde{w}(q,t)= w(q) \exp(\lambda t),$ where $w(q)$ is a non-negative function, we obtain
+\begin{eqnarray*}
+\lambda w(q)&=& \frac{a_1 b_R}{\mu_R}f_1(q) \left(\int_0^1 w(q') dq'\right) -\mu_R w(q) 
+\end{eqnarray*}
+and 
+\begin{eqnarray*}
+w(q) &=& \frac{a_1 b_R}{\mu_R (\lambda+\mu_R)}f_1(q) \int_0^1 w(q') dq'. 
+\end{eqnarray*}
+Integrating both sides from $0$ to $1$ with respect to $q$ gives
+\begin{eqnarray*}
+\int_0^1 w(q) dq &=& \frac{a_1 b_R}{\mu_R (\lambda+\mu_R)} \int_0^1 f_1(q) dq \int_0^1 w(q') dq'\\
+&= &  \frac{a_1 b_R}{\mu_R (\lambda+\mu_R)} \int_0^1 w(q') dq',
+\end{eqnarray*}
+which can be written as
+\begin{eqnarray*}
+ \int_0^1 w(q') dq' \left(1-\frac{a_1 b_R}{\mu_R(\lambda+\mu_R)}\right) &=& 0.
+\end{eqnarray*}
+Because $w(q)>0$, we necessarily have
+\begin{eqnarray*}
+ \lambda &=& \frac{a_1 b_R}{\mu_R}-\mu_R.
+\end{eqnarray*}
+Hence $\lambda$ is positive if and only if
+\begin{equation*}
+a_1 b_R >\mu_R^2.
+\end{equation*}
+Thus, the non-trivial equilibrium is stable (i.e. the species can invade an empty system) if and only if
+\begin{equation}
+a_1> \frac{\mu_R^2}{b_R}.
+\end{equation}
+
+\subsection{Mean field establishment model with competition}
+We consider Model 2 with the  extreme form of competition where ($z \rightarrow 0$). First, let us consider two species, with fitness functions $f_1(q)$ and $f_2(q)$, and colonization rate parameters $a_1$ and $a_2$, respectively. We assume that (10) is satisfied for species 1 and that the system is at the species-1-only -positive equilibrium, and ask if species 2 can  invade. We apply the following perturbations: 
+\begin{eqnarray*}
+ \rho^*(q,t)&= &\rho^*(q)+\epsilon \tilde{v}(q,t), \\
+ \rho_1^*(q,t)&= &\rho_1^*(q)+\epsilon \tilde{w}_1(q,t), \\
+ \rho_2^*(q,t)&= &\rho_2^*(q)+\epsilon \tilde{w}_2(q,t)=\epsilon \tilde{w}_2(q,t),
+\end{eqnarray*} 
+and linearise to obtain 
+\begin{eqnarray*}
+\frac{d}{dt} \tilde{v}(q,t) &=& - \mu_R \tilde{v}(q,t),\\
+\frac{d}{d t} \tilde{w}_1(q,t) &=& -\mu_R \tilde{w}_1(q,t)+\left(\rho^*(q)-\rho_1^*(q)\right)a_1 f_1(q)\int_0^1 \tilde{w}_1(q',t) dq' \\
+& & + a_1 f_1(q) \left(\tilde{v}(q,t)-\tilde{w}_1(q,t)-\tilde{w}_2(q,t)\right)\int_0^1 \rho_1^*(q')dq ,\\
+\frac{d}{d t} \tilde{w}_2(q,t) &=& -\mu_R \tilde{w}_2(q,t)+ a_2 f_2(q) \left(\rho^*(q)-\rho_1^*(q)\right) \int_0^1 \tilde{w}_2(q',t) dq'.
+\end{eqnarray*}
+We use the ansatz  $\tilde{w}_2(q,t)=w_2(q) \exp(\lambda t)$, where $ w_2(q) >0 $. It follows that
+\begin{eqnarray*}
+\lambda w_2(q)&=& -\mu_R w_2(q)+ a_2 f_2(q)  \left(\rho^*(q)-\rho_1^*(q) \right) \int_0^1 w_2(q') dq'\\ 
+w_2(q)&=&\frac{a_2 f_2(q) \left(\rho^*(q)-\rho_1^*(q) \right)}{\lambda + \mu_R} \int_0^1 w_2(q') dq'\\
+0&=&\left(1-\frac{a_2 \int_0^1  f_2(q') \left(\rho^*(q')-\rho_1^*(q') \right)dq'}{\lambda + \mu_R} \right)  \int_0^1 w_2(q') dq'.
+\end{eqnarray*} 
+As $\rho^*(q)= b_R/\mu_R$, we obtain 
+\begin{eqnarray*}
+ \lambda =\left( a_2 \int_0^1 \left( \frac{b_R}{\mu_R} - \rho_1^*(q')\right) f_2(q')dq' \right)-\mu_R. 
+\end{eqnarray*}
+Thus $\lambda$ is positive if and only if
+\begin{eqnarray*}
+ \frac{\mu_R}{a_2} & < &\frac{b_R}{\mu_R} -\int_0^1 \rho_1^*(q') f_2(q') dq',
+\end{eqnarray*}
+which can be rewritten as 
+\begin{equation}
+\int_0^1 \rho_1^*(q') f_2(q')dq'  < \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2}. 
+\end{equation}
+
+Relation (11) describes the condition under which, a species characterized by a fitness function $f_2(q)$ and a colonization parameter rate $a_2$ can invade a resident species which achieves the equilibrium density $\rho_1^*(q)$ in the absence of the invading species. The previous reasoning and calculations are valid also if we assume that there is more than one resident species, in which case $\rho_1^*(q)$ denotes the equilibrium density of resource units occupied by the set of resident species. Since our study questions deal specifically with a community consisting of a generalist and a set of specialists, below we study two particular cases involving a perfect generalist, assuming that the generalist is either the invader or the resident.
+
+\subsubsection{Special case 1: the generalist is the invader}
+
+We first assume that the invading species 2 is a perfect generalist with a fitness kernel $ f_2(q)=1.$  Following the remark from the previous section, we denote by $\rho_1^*(q)$ the combined density of occupied resource units by all specialists (or any other set of resident species) at equilibrium. Using relation (11), species 2 can invade if and only if
+\begin{eqnarray}
+  \int_0^1 \rho_1^*(q') f_2(q') dq' & < & \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2} \nonumber\\
+ \Leftrightarrow  \frac{\mu_R}{a_2} & < & \frac{b_R}{\mu_R} -  \int_0^1 \rho_1^*(q') dq'.
+\end{eqnarray}
+Note that the right side of the equation is the amount of resources left unused by the resident species.
+
+\subsubsection{Special case 2: the generalist is the resident}
+
+Let us assume that resident species 1 is a generalist with fitness kernel $ f_1(q)=1$ and colonization rate parameter $a_1$, and that species 2 has an arbitrary fitness kernel $f_2(q)$ and colonization rate parameter $a_2$. As shown above, the resident reaches the equilbrium density
+ $$\rho_1^* = \left(\frac{b_R}{\mu_R}- \frac{\mu_R}{a_1} \right).$$ 
+From relation (11), species 2 can invade if and only if
+\begin{align}
+ \left( \frac{b_R}{\mu_R}- \frac{\mu_R}{a_1} \right) \int_0^1 f_2(q') dq' &<   \left(  \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2} \right) \nonumber\\
+ \Leftrightarrow \left( \frac{b_R}{\mu_R}- \frac{\mu_R}{a_1} \right) &< \left( \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2} \right) \nonumber\\
+ \Leftrightarrow   a_1 &< a_2.
+\end{align} 
+Thus, a species can invade a system occupied by a perfect generalist if and only if the invading species has a higher colonization rate parameter irrespective of its niche width.
+
+\section{Stochastic non-spatial model}
+
+This model variant explores the marginal influence of stochasticity on the community. This is done by assuming a uniform dispersal kernel for the entire landscape. In that case, the probability of reaching a targeted location is independent of its distance from the source, thus removing the spatial component.  The colonization rate for the establishment model becomes 
+
+\begin{equation*}
+r(q, n ; a , q^*, \nu, z) = a z^n f_{q^*, \nu} (q)\frac{|H_O(t)|}{|\Omega|}.
+\end{equation*}
+Here, $|H_O(t)|$ is the total number of occupied resource units by the focal species at time $t$ and $|\Omega|$ the total area of the landscape.
+
+\section{Deterministic spatial model}
+
+The spatial model is obtained by modifying the mean field equation to account for the spatial coordinates and the dispersal kernel (it can also be derived from the main model by taking the limit at which the density of resource units becomes infinitely high, so that the effect of demographic stochasticity vanishes).  Let us denote $\rho(x,y,q,t), \rho_i (x,y ,q,t)$, and  $Q(x,y,q)$ respectively:  the density of resource unit,  the density of species$i$ occupying resource unit, and the resource unit production rate of type $q$ at location $(x,y)$ at time $t$. 
+Without competition and for establishment model, the dynamics of the system is described by
+
+\begin{align*}
+\begin{cases}
+\displaystyle  \frac{d}{dt} \rho(x,y,q,t) & =  Q(x,y,q) - \mu_R \rho(x,y,q,t), \\
+\displaystyle \frac{d}{dt} \rho_i (x,y,q,t) & =  a_i \left( \rho(x,y,q,t)- \rho_i(x,y,q,t) \right) f_i(q) \int_0^1 (D_i \ast \rho_i) (q') dq' - \mu_R \rho_i(x,y,q,t), 
+\end{cases}
+\end{align*}
+where $(D_i \ast \rho_i)(q') = \int_{\Omega} D_i(x- x', y-y') \rho_i(x',y',q',t) dx' dy'$ i.e. the convolution product between the dispersal kernel and the density of occupied resource unit by the focal species $i$. The time variable $t$  is dropped for brevity.  
+With exclusive competition $(z \rightarrow 0)$, we have   
+\begin{align*}
+\begin{cases}
+\displaystyle \frac{d}{dt} \rho(x,y,q,t) &=  Q(x,y,q) - \mu_R \rho(x,y,q,t), \\
+\displaystyle \frac{d}{dt}  \rho_i (x,y,q,t) &=  a_i \left( \rho(x,y,q,t)- \sum_{1\leq j \leq M}\rho_j(x,y,q,t) \right) f_i(q) \int_0^1 (D_i \ast \rho_i) (q') dq' - \mu_R \rho_i(x,y,q,t).
+\end{cases}
+\end{align*}
+
+\begin{thebibliography}{9}
+
+\bibitem{OO2014} Ovaskainen, O., Finkelshtein, D. , Kutoviy, O., Cornell, S., Bolker, B. and  Kondratiev, Y. 2014 A general mathematical framework for the analysis of spatiotemporal point processes. Theoretical Ecology 7:101-113.
+
+\end{thebibliography}
+
+
+\end{document}
+
+
