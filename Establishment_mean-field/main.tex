@@ -107,11 +107,11 @@ and thus
 \begin{eqnarray}
 1 &=& \frac{b_R a_1}{\mu_R} \int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 I_1^* f_1(q)},
 \end{eqnarray} 
-where $I_1^*$ represents the total density of resources units of any type $q$ occupied by species 1 at equilibrium. It is easy that see that there is a unique $I_1^*$ that satisfies the equation (9): if assuming that $I_1^*<J_1^*$, then 
+where $I_1^*$ represents the total density of resources units of any type $q$ occupied by species 1 at equilibrium. It is easy that see that there is a unique $I_1^*$ that satisfies the equation (1): if assuming that $I_1^*<J_1^*$, then 
 \begin{eqnarray*}
 1 = \frac{b_R a_1}{\mu_R} \int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 J_1^* f_1(q)} & < & \frac{b_R a_1}{\mu_R} \int_0^1 \frac{f_1(q)dq}{\mu_R+ a_1 I_1^* f_1(q)}=1.
 \end{eqnarray*}
-It follows that the non-trivial equilibrium in (8) is unique.
+It follows that the non-trivial equilibrium in (1) is unique.
 
 \subsubsection*{Linear stability analysis of the trivial equilibrium}
 We consider the dynamics starting from a small perturbation around the equilibrium, so that  $$\rho(q,t)=\rho^*(q)+\epsilon \tilde{v}(q,t)$$ and $$\rho_1(q,t)=\rho_1^*(q)+ \epsilon \tilde{w}(q,t)= \epsilon \tilde{w}(q,t).$$
@@ -151,7 +151,7 @@ a_1> \frac{\mu_R^2}{b_R}.
 \end{equation}
 
 \subsection{Mean field establishment model with competition}
-We consider Model 2 with the  extreme form of competition where ($z \rightarrow 0$). First, let us consider two species, with fitness functions $f_1(q)$ and $f_2(q)$, and colonization rate parameters $a_1$ and $a_2$, respectively. We assume that (10) is satisfied for species 1 and that the system is at the species-1-only -positive equilibrium, and ask if species 2 can  invade. We apply the following perturbations: 
+We consider Model 2 with the  extreme form of competition where ($z \rightarrow 0$). First, let us consider two species, with fitness functions $f_1(q)$ and $f_2(q)$, and colonization rate parameters $a_1$ and $a_2$, respectively. We assume that (4) is satisfied for species 1 and that the system is at the species-1-only -positive equilibrium, and ask if species 2 can  invade. We apply the following perturbations: 
 \begin{eqnarray*}
  \rho^*(q,t)&= &\rho^*(q)+\epsilon \tilde{v}(q,t), \\
  \rho_1^*(q,t)&= &\rho_1^*(q)+\epsilon \tilde{w}_1(q,t), \\
@@ -183,11 +183,11 @@ which can be rewritten as
 \int_0^1 \rho_1^*(q') f_2(q')dq'  < \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2}. 
 \end{equation}
 
-Relation (11) describes the condition under which, a species characterized by a fitness function $f_2(q)$ and a colonization parameter rate $a_2$ can invade a resident species which achieves the equilibrium density $\rho_1^*(q)$ in the absence of the invading species. The previous reasoning and calculations are valid also if we assume that there is more than one resident species, in which case $\rho_1^*(q)$ denotes the equilibrium density of resource units occupied by the set of resident species. Since our study questions deal specifically with a community consisting of a generalist and a set of specialists, below we study two particular cases involving a perfect generalist, assuming that the generalist is either the invader or the resident.
+Relation (5) describes the condition under which, a species characterized by a fitness function $f_2(q)$ and a colonization parameter rate $a_2$ can invade a resident species which achieves the equilibrium density $\rho_1^*(q)$ in the absence of the invading species. The previous reasoning and calculations are valid also if we assume that there is more than one resident species, in which case $\rho_1^*(q)$ denotes the equilibrium density of resource units occupied by the set of resident species. Since our study questions deal specifically with a community consisting of a generalist and a set of specialists, below we study two particular cases involving a perfect generalist, assuming that the generalist is either the invader or the resident.
 
 \subsubsection{Special case 1: the generalist is the invader}
 
-We first assume that the invading species 2 is a perfect generalist with a fitness kernel $ f_2(q)=1.$  Following the remark from the previous section, we denote by $\rho_1^*(q)$ the combined density of occupied resource units by all specialists (or any other set of resident species) at equilibrium. Using relation (11), species 2 can invade if and only if
+We first assume that the invading species 2 is a perfect generalist with a fitness kernel $ f_2(q)=1.$  Following the remark from the previous section, we denote by $\rho_1^*(q)$ the combined density of occupied resource units by all specialists (or any other set of resident species) at equilibrium. Using relation (5), species 2 can invade if and only if
 \begin{eqnarray}
   \int_0^1 \rho_1^*(q') f_2(q') dq' & < & \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2} \nonumber\\
  \Leftrightarrow  \frac{\mu_R}{a_2} & < & \frac{b_R}{\mu_R} -  \int_0^1 \rho_1^*(q') dq'.
@@ -198,7 +198,7 @@ Note that the right side of the equation is the amount of resources left unused 
 
 Let us assume that resident species 1 is a generalist with fitness kernel $ f_1(q)=1$ and colonization rate parameter $a_1$, and that species 2 has an arbitrary fitness kernel $f_2(q)$ and colonization rate parameter $a_2$. As shown above, the resident reaches the equilbrium density
  $$\rho_1^* = \left(\frac{b_R}{\mu_R}- \frac{\mu_R}{a_1} \right).$$ 
-From relation (11), species 2 can invade if and only if
+From relation (5), species 2 can invade if and only if
 \begin{align}
  \left( \frac{b_R}{\mu_R}- \frac{\mu_R}{a_1} \right) \int_0^1 f_2(q') dq' &<   \left(  \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2} \right) \nonumber\\
  \Leftrightarrow \left( \frac{b_R}{\mu_R}- \frac{\mu_R}{a_1} \right) &< \left( \frac{b_R}{\mu_R} -\frac{\mu_R}{a_2} \right) \nonumber\\
