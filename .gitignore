@@ -72,4 +72,5 @@ main.pdf
 *.gz
 *.bak
 
-#should ignore this or that foldergt
+*.pptx
+#should ignore this or that folder
