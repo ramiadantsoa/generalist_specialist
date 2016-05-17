@@ -64,7 +64,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-main.pdf
+Appendix_1.pdf
+Appendix_2.pdf
+
 *.log
 *.aux
 *.bbl
